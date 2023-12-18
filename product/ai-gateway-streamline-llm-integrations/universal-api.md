@@ -17,29 +17,27 @@ const portkey = new Portkey({
     virtualKey: "VIRTUAL_KEY"   // The OpenAI virtual key
 });
 
-// Function to generate a text completion
+// Generate a text completion
 async function getTextCompletion() {
     const completion = await portkey.completions.create({
         prompt: "Say this is a test",
         model: "gpt-3.5-turbo-instruct",
     });
 
-    return completion;
+    console.log(completion);
 }
-
-const response = await getTextCompletion();
-console.log(response);
+getTextCompletion();
 ```
 {% endtab %}
 
 {% tab title="Python" %}
 ```python
-from portkey_ai import Portkey
+from portkey import Portkey
 
 # Initialize the Portkey client
 portkey = Portkey(
-    api_key="/turdjWE+tIUeAzmzGxGEkkJLBQ=",  # Replace with your Portkey API key
-    virtual_key="open-ai-key-6317bc"   # The OpenAI virtual key
+    api_key="PORTKEY_API_KEY",  # Replace with your Portkey API key
+    virtual_key="VIRTUAL_KEY"   # The OpenAI virtual key
 )
 
 # Generate a text completion
@@ -48,10 +46,9 @@ def get_text_completion():
         prompt='Say this is a test',
         model='gpt-3.5-turbo-instruct'
     )
-    return completion
+    print(completion)
 
-response = get_text_completion()
-print(response)
+get_text_completion()
 ```
 {% endtab %}
 {% endtabs %}
@@ -68,44 +65,38 @@ const portkey = new Portkey({
 <strong>    virtualKey: "VIRTUAL_KEY"   // The Anthropic virtual key
 </strong>});
 
-// Function to generate a text completion
+// Generate a text completion
 async function getTextCompletion() {
     const completion = await portkey.completions.create({
         prompt: "Say this is a test",
 <strong>        model: "claude-2",
-</strong><strong>        max_tokens: 250 //required parameter for Anthropic
 </strong>    });
 
-    return completion;
+    console.log(completion);
 }
-
-const response = await getTextCompletion();
-console.log(response);
+getTextCompletion();
 </code></pre>
 {% endtab %}
 
 {% tab title="Python" %}
-```python
-from portkey_ai import Portkey
+<pre class="language-python"><code class="lang-python">from portkey import Portkey
 
 # Initialize the Portkey client
 portkey = Portkey(
     api_key="PORTKEY_API_KEY",  # Replace with your Portkey API key
-    virtual_key="VIRTUAL_KEY"# The Anthropic virtual key
-)
+<strong>    virtual_key="VIRTUAL_KEY"   # The Anthropic virtual key
+</strong>)
 
 # Generate a text completion
 def get_text_completion():
     completion = portkey.completions.create(
         prompt='Say this is a test',
-        model='claude-2',
-        max_tokens=250 #required parameter for Anthropic
-    )
-    return completion
+<strong>        model='claude-2'
+</strong>    )
+    print(completion)
 
-response = get_text_completion()
-print(response)
-```
+get_text_completion()
+</code></pre>
 {% endtab %}
 {% endtabs %}
 

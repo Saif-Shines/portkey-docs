@@ -80,7 +80,7 @@ async function getTextCompletion() {
 
     console.log(completion);
 }
-await getTextCompletion();
+getTextCompletion();
 ```
 
 ```javascript
@@ -96,7 +96,7 @@ async function getTextCompletionStream(){
         console.log(chunk.content);
     }
 }
-await getTextCompletionStream();
+getTextCompletionStream();
 ```
 
 ```javascript
@@ -109,13 +109,13 @@ async function getTextCompletionWithConfig() {
 
     console.log(completion);
 }
-await getTextCompletionWithConfig();
+getTextCompletionWithConfig();
 ```
 {% endtab %}
 
 {% tab title="Python" %}
 ```python
-from portkey_ai import Portkey
+from portkey import Portkey
 
 # Initialize the Portkey client
 portkey = Portkey(
@@ -126,8 +126,8 @@ portkey = Portkey(
 # Generate a text completion
 def get_text_completion():
     completion = portkey.completions.create(
-        prompt="Say this is a test",
-        model="gpt-3.5-turbo-instruct"
+        prompt='Say this is a test',
+        model='gpt-3.5-turbo-instruct'
     )
     print(completion)
 
@@ -138,11 +138,11 @@ get_text_completion()
 ```python
 # Example with config parameters
 def get_chat_completion_with_config():
-    completion = portkey.with_options({'config': 'sample-7g5tr4'}).completions.create(
+    chat_completion = portkey.with_options({'config': 'sample-7g5tr4'}).chat.completions.create(
         messages=[{'role': 'user', 'content': 'Say this is a test'}],
-        model='gpt-3.5-turbo-instruct'
+        model='gpt-3.5-turbo'
     )
-    print(completion)
+    print(chat_completion)
 
 get_chat_completion_with_config()
 ```
@@ -150,9 +150,9 @@ get_chat_completion_with_config()
 ```python
 # Generate a streaming chat completion
 async def get_chat_completion_stream():
-    completion_stream = portkey.completions.create(
+    chat_completion_stream = portkey.chat.completions.create(
         messages=[{'role': 'user', 'content': 'Say this is a test'}],
-        model='gpt-3.5-turbo-instruct',
+        model='gpt-3.5-turbo',
         stream=True
     })
 

@@ -62,7 +62,7 @@ async function getEmbeddings() {
 
     console.log(embeddings);
 }
-await getEmbeddings();
+getEmbeddings();
 
 // Generate embeddings with config params
 async function getEmbeddingsWithConfig() {
@@ -73,13 +73,13 @@ async function getEmbeddingsWithConfig() {
 
     console.log(embeddings);
 }
-await getEmbeddingsWithConfig();
+getEmbeddingsWithConfig();
 ```
 {% endtab %}
 
 {% tab title="Python" %}
 ```py
-from portkey_ai import Portkey
+from portkey import Portkey
 
 # Initialize the Portkey client
 portkey = Portkey(

@@ -6,15 +6,14 @@ The Load Balancing feature allows you to specify a list of Language Model APIs (
 
 ### Enable Load Balancing
 
-To enable Load Balancing, you can modify the `config` object to include a `strategy` with `loadbalance` mode.
+To enable Load Balancing, you can modify the `config` object to include the `loadbalance` mode.
 
 Here's a quick example to **load balance 75-25** between an OpenAI and an Azure OpenAI account
 
 ```json
 {
-  "strategy": {
-      "mode": "loadbalance",
-  },
+  "version": "2.0",
+  "mode": "loadbalance",
   "targets": [
     {
       "virtualKey": "openai-virtual-key",

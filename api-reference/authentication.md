@@ -33,19 +33,19 @@ console.log(chatCompletion.choices);
 {% endtab %}
 
 {% tab title="Python SDK" %}
-<pre class="language-python"><code class="lang-python">from portkey_ai import Portkey
+<pre class="language-python"><code class="lang-python">from portkey import Portkey
 
 client = Portkey(
 <strong>    api_key="PORTKEY_API_KEY",  # Replace with your actual API key
 </strong>    virtual_key="VIRTUAL_KEY"   # Optional: Use if virtual keys are set up
 )
 
-chat_completion = client.chat.completions.create(
+chat_completion = client.chat.complete.create(
     messages=[{"role": "user", "content": "Say this is a test"}],
     model='gpt-3.5-turbo'
 )
 
-print(chat_completion.choices[0].message["content"])
+print(chat_completion.choices[0].message.content)
 </code></pre>
 {% endtab %}
 
@@ -78,7 +78,7 @@ import { PORTKEY_GATEWAY_URL, createHeaders } from 'portkey-ai';
 openai.api_base = PORTKEY_GATEWAY_URL;
 
 const headers = createHeaders({
-    provider: "openai",
+    mode: "openai",
 <strong>    apiKey: "PORTKEY_API_KEY" // Replace with your actual Portkey API key
 </strong>});
 
@@ -88,24 +88,9 @@ const headers = createHeaders({
 {% endtab %}
 
 {% tab title="Python" %}
-```python
-from openai import OpenAI
-from portkey_ai import PORTKEY_GATEWAY_URL, createHeaders
 
-openai_client = OpenAI(
-    base_url=PORTKEY_GATEWAY_URL,
-    default_headers=createHeaders(
-        api_key="PORTKEY-API-KEY",
-        provider="openai"
-    )
-)
-response = openai_client.chat.completions.create(
-        messages=[{'role': 'user', 'content': 'Say this is a test'}],
-        model='gpt-3.5-turbo'
-)
-```
 {% endtab %}
 {% endtabs %}
 
-Read more [here](../welcome/integration-guides/openai.md).
+Read more [here](../getting-started/integration-guides/openai.md).
 

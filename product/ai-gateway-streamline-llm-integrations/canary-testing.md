@@ -10,9 +10,8 @@ The config object would look like this
 
 ```json
 {
-  "strategy": {
-      "mode": "loadbalance"
-  },
+  "version": "2.0",
+  "mode": "loadbalance",
   "targets": [
     {
       "virtualKey": "openai-virtual-key",

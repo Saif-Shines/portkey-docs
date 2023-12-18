@@ -1,19 +1,28 @@
 # Table of contents
 
-## Welcome
+## Getting Started
 
 * [What is Portkey?](README.md)
-* [Make Your First Request](welcome/make-your-first-request.md)
-* [Integration Guides](welcome/integration-guides/README.md)
-  * [OpenAI](welcome/integration-guides/openai.md)
-  * [Azure OpenAI](welcome/integration-guides/azure-openai.md)
-  * [Langchain (Python)](welcome/integration-guides/langchain-python.md)
-  * [Llama Index (Python)](welcome/integration-guides/llama-index-python.md)
-  * [Anthropic](welcome/integration-guides/anthropic.md)
-  * [Cohere](welcome/integration-guides/cohere.md)
-  * [Google Palm](welcome/integration-guides/google-palm.md)
-  * [Anyscale (Llama2, Mistral, Zephyr)](welcome/integration-guides/anyscale-llama2-mistral-zephyr.md)
-  * [Suggest a new integration!](welcome/integration-guides/suggest-a-new-integration.md)
+* [Make Your First Request](getting-started/make-your-first-request.md)
+* [🚧 Quickstart Guides](getting-started/quickstart-guides/README.md)
+  * [😻 Visualise your App's Performance](getting-started/quickstart-guides/visualise-your-apps-performance.md)
+  * [📈 Scale Beyond Rate-limits](getting-started/quickstart-guides/scale-beyond-rate-limits.md)
+  * [🐞 Decrease Error Rates](getting-started/quickstart-guides/decrease-error-rates.md)
+  * [📚 Create a Prompt Library](getting-started/quickstart-guides/create-a-prompt-library.md)
+  * [🕵 Test and Iterate Prompts](getting-started/quickstart-guides/test-and-iterate-prompts.md)
+  * [🏎 Test New Models, Fast](getting-started/quickstart-guides/test-new-models-fast.md)
+* [🚧 Migrating to the New SDKs](getting-started/migrating-to-the-new-sdks.md)
+* [Integration Guides](getting-started/integration-guides/README.md)
+  * [How to pick an integration?](getting-started/integration-guides/how-to-pick-an-integration.md)
+  * [OpenAI](getting-started/integration-guides/openai.md)
+  * [Azure OpenAI](getting-started/integration-guides/azure-openai.md)
+  * [Langchain (Python)](getting-started/integration-guides/langchain-python.md)
+  * [Llama Index (Python)](getting-started/integration-guides/llama-index-python.md)
+  * [Anthropic](getting-started/integration-guides/anthropic.md)
+  * [Cohere](getting-started/integration-guides/cohere.md)
+  * [Google Palm](getting-started/integration-guides/google-palm.md)
+  * [Anyscale (Llama2, Mistral, Zephyr)](getting-started/integration-guides/anyscale-llama2-mistral-zephyr.md)
+  * [Suggest a new integration!](getting-started/integration-guides/suggest-a-new-integration.md)
 
 ## Product
 
@@ -33,8 +42,12 @@
   * [Load Balancing](product/ai-gateway-streamline-llm-integrations/load-balancing.md)
   * [Canary Testing](product/ai-gateway-streamline-llm-integrations/canary-testing.md)
   * [Virtual Keys](product/ai-gateway-streamline-llm-integrations/virtual-keys.md)
-* [Prompt Library](product/prompt-library.md)
-* [Autonomous Fine-tuning](product/autonomous-fine-tuning.md)
+* [🚧 Prompt Library](product/prompt-library.md)
+* [Autonomous Fine-tuning](product/autonomous-fine-tuning/README.md)
+  * [Overview](product/autonomous-fine-tuning/overview.md)
+  * [Create a fine-tune](product/autonomous-fine-tuning/create-a-fine-tune.md)
+  * [Using Fine-tunes](product/autonomous-fine-tuning/using-fine-tunes.md)
+* [Plug-ins](product/plug-ins.md)
 
 ## API Reference
 
@@ -46,15 +59,26 @@
 * [Completions](api-reference/completions.md)
 * [Embeddings](api-reference/embeddings.md)
 * [Feedback](api-reference/feedback.md)
-* [Gateway for Other APIs](api-reference/gateway-for-other-apis.md)
 * [Prompts](api-reference/prompts/README.md)
   * [Prompt Completion](api-reference/prompts/prompt-completion.md)
+  * [List Prompts](api-reference/prompts/list-prompts.md)
+  * [Get a Prompt](api-reference/prompts/get-a-prompt.md)
+  * [Create a Prompt](api-reference/prompts/create-a-prompt.md)
+  * [Update a Prompt](api-reference/prompts/update-a-prompt.md)
+  * [Delete a Prompt](api-reference/prompts/delete-a-prompt.md)
+* [Configs](api-reference/configs.md)
+* [Virtual Keys](api-reference/virtual-keys.md)
+* [Fine-tunes](api-reference/fine-tunes.md)
 * [Evals](api-reference/evals.md)
+* [Gateway for other APIs](api-reference/gateway-for-other-apis.md)
+* [Errors](api-reference/errors.md)
 
-## Cookbooks
+## Advanced Guides
 
-* [Few-shot Prompting](cookbooks/few-shot-prompting.md)
+* [Build & Test RAG](advanced-guides/build-and-test-rag.md)
+* [Enable JSON responses](advanced-guides/enable-json-responses.md)
 
-## Changelog
+## Integrations
 
-* [Portkey's December Migration](changelog/portkeys-december-migration.md)
+* [Langchain](integrations/langchain.md)
+* [Llama Index](integrations/llama-index.md)

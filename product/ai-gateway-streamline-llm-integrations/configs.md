@@ -14,7 +14,7 @@ Navigate to the ‘Configs’ page in the Portkey app and click 'Create' to star
 
 Configs are supported across all integrations.
 
-* Through the config parameter of the Portkey SDK client(Directly or via [frameworks](../../welcome/integration-guides/))
+* Through the config parameter of the Portkey SDK client(Directly or via [frameworks](../../getting-started/integration-guides/))
 * Through the config headers in the OpenAI SDK
 * Via the REST API through the `x-portkey-config` header
 
@@ -86,8 +86,6 @@ const portkey = Portkey(
 {% endtabs %}
 
 If you want to attach the configuration to only a few requests instead of modifying the client, you can send it in the request headers for OpenAI or in the config parameter while using the Portkey SDK.
-
-> Note: If you have a default configuration set in the client, but also include a configuration in a specific request, the request-specific configuration will take precedence and replace the default config for that particular request.
 
 {% tabs %}
 {% tab title="NodeJS" %}
