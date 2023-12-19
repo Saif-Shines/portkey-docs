@@ -48,9 +48,7 @@ When making an chat completions call, pass an additional property as follows to 
 
 {% tabs %}
 {% tab title="Nodejs" %}
-{% code overflow="wrap" fullWidth="true" %}
-```javascript
-const messages = [
+<pre class="language-javascript" data-overflow="wrap" data-full-width="true"><code class="lang-javascript">const messages = [
   {
     role: "system",
     content: `As culinary master, you provide structured recipes (title, description, steps) in JSON format.`,
@@ -63,19 +61,16 @@ const messages = [
 
 const chatCompletion = await portkey.chat.completions.create({
   messages,
-  model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
-  response_format: {
-    type: "json_object",
-  }
-});
-```
-{% endcode %}
+<strong>  model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
+</strong><strong>  response_format: {
+</strong><strong>    type: "json_object",
+</strong><strong>  }
+</strong>});
+</code></pre>
 {% endtab %}
 
 {% tab title="Python" %}
-{% code overflow="wrap" %}
-```python
-messages = [
+<pre class="language-python" data-overflow="wrap"><code class="lang-python">messages = [
     {
         "role": "system",
         "content": "As culinary master, you provide structured recipes (title, description, steps) in JSON format."
@@ -88,22 +83,21 @@ messages = [
 
 chat_completion = portkey.chat.completions.create(
     messages=messages,
-    model="mistralai/Mixtral-8x7B-Instruct-v0.1",
-    response_format={
-        "type": "json_object"
-    }
-)
-```
-{% endcode %}
+<strong>    model="mistralai/Mixtral-8x7B-Instruct-v0.1",
+</strong><strong>    response_format={
+</strong><strong>        "type": "json_object"
+</strong><strong>    }
+</strong>)
+</code></pre>
 {% endtab %}
 {% endtabs %}
 
-<table data-header-hidden><thead><tr><th></th><th></th><th>Required</th><th data-hidden></th><th data-hidden></th></tr></thead><tbody><tr><td><code>response_format</code></td><td>An object specifying the format that the model must output.</td><td>Optional</td><td>senEeT</td><td>afdsafds</td></tr><tr><td><code>model</code></td><td>ID of the model to use. Find the list of <a href="https://portkey.ai/docs/welcome/integration-guides/anyscale-llama2-mistral-zephyr#list-of-models-supported">supported models</a>.</td><td>&#x3C;Yes?></td><td>safds</td><td></td></tr></tbody></table>
+<table data-header-hidden><thead><tr><th></th><th></th><th>Required</th><th data-hidden></th><th data-hidden></th></tr></thead><tbody><tr><td><code>response_format</code></td><td>An object specifying the format that the model must output.</td><td>Optional</td><td>senEeT</td><td>afdsafds</td></tr><tr><td><code>model</code></td><td>ID of the model to use. Find the list of <a href="https://portkey.ai/docs/welcome/integration-guides/anyscale-llama2-mistral-zephyr#list-of-models-supported">supported models</a>.</td><td>Yes</td><td>safds</td><td></td></tr></tbody></table>
 
 #### Using playground
 
-Experiment with different prompts in the Portkey Playground to identify the one that best suits your app.
+Experiment with different prompts in the Portkey playground to identify the one that best suits your app. The playground will display an option for Response Format for all the supported models.&#x20;
 
 <figure><img src="../.gitbook/assets/JSON Prompt UI.png" alt=""><figcaption></figcaption></figure>
 
-Incase you have more questions, we are up for a discussion along with Anyscale team in the _LLMs in Production_ community. [Join us](https://discord.gg/DD7vgKK299)!
+And that's it! You're now equipped to start using JSON response format for your prompts to LLMs. Get out there and try playing around this feature! Incase you have more questions, we are up for a discussion along with Anyscale team in the _LLMs in Production_ community. [Join us](https://discord.gg/DD7vgKK299)!
