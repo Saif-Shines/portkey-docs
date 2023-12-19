@@ -100,6 +100,10 @@ chat_completion = portkey.chat.completions.create(
 
 <table data-header-hidden><thead><tr><th></th><th></th><th>Required</th><th data-hidden></th><th data-hidden></th></tr></thead><tbody><tr><td><code>response_format</code></td><td>An object specifying the format that the model must output.</td><td>Optional</td><td>senEeT</td><td>afdsafds</td></tr><tr><td><code>model</code></td><td>ID of the model to use. Find the list of <a href="https://portkey.ai/docs/welcome/integration-guides/anyscale-llama2-mistral-zephyr#list-of-models-supported">supported models</a>.</td><td>&#x3C;Yes?></td><td>safds</td><td></td></tr></tbody></table>
 
-<< work in progress - playground & logs | feels optional >>
+#### Using playground
+
+Experiment with different prompts in the Portkey Playground to identify the one that best suits your app.
+
+<figure><img src="../.gitbook/assets/JSON Prompt UI.png" alt=""><figcaption></figcaption></figure>
 
 Incase you have more questions, we are up for a discussion along with Anyscale team in the _LLMs in Production_ community. [Join us](https://discord.gg/DD7vgKK299)!
