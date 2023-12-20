@@ -1,18 +1,10 @@
-# Enable JSON responses
+# JSON Assurance with LLMs: Portkey SDK & AnyScale
 
-JSON is one of the popular notions for the applications to talk to each other since the request & response is structured. Many developers would go on to use techniques such as _few shot examples, function calling,_ and _fine-tuning_ their LLMs to optimize for JSON responses. Recently, OpenAI has provided this option exclusively.&#x20;
+Getting assured JSON responses in your LLM applications using Portkey SDK is easy. This cookbook will teach us to ensure the JSON schema in response to our prompts from Anyscale's `Mistral-7B-Instruct-v0.1` model using Portkey SDK.
 
-If you use an open-source model, you won't fall behind. Anyscale's open-source models now support JSON mode through Portkey SDK.
 
-#### Prerequisites
 
-{% content-ref url="../api-reference/portkey-sdk-client.md" %}
-[portkey-sdk-client.md](../api-reference/portkey-sdk-client.md)
-{% endcontent-ref %}
-
-{% content-ref url="../getting-started/integration-guides/anyscale-llama2-mistral-zephyr.md" %}
-[anyscale-llama2-mistral-zephyr.md](../getting-started/integration-guides/anyscale-llama2-mistral-zephyr.md)
-{% endcontent-ref %}
+####
 
 ***
 

@@ -76,7 +76,7 @@
 ## Advanced Guides
 
 * [Build & Test RAG](advanced-guides/build-and-test-rag.md)
-* [Enable JSON responses](advanced-guides/enable-json-responses.md)
+* [JSON Assurance with LLMs: Portkey SDK & AnyScale](advanced-guides/json-assurance-with-llms-portkey-sdk-and-anyscale.md)
 
 ## Integrations
 
