@@ -4,11 +4,11 @@ description: Portkey SDK for JSON Responses with Anyscale's open-source models
 
 # JSON Assurance with LLMs
 
-Getting assured JSON responses in your LLM applications using Portkey SDK is easy. This cookbook, the first in the series, will teach you to ensure the JSON schema in response to our prompts from Anyscale's `Mistral-7B-Instruct-v0.1` model using Portkey SDK.
+Getting assured JSON responses in your LLM applications using Portkey SDK Client is easy. This cookbook, the first in the series, will teach you to ensure the JSON schema in response to your prompts from Anyscale's `Mistral-7B-Instruct-v0.1` model.
 
-You may have attempted few-shot prompting, function calling, or fine-tuning techniques to obtain a valid JSON response. You may want to ensure that the JSON conforms to your defined schema.
+You may have attempted few-shot prompting, function calling, or fine-tuning techniques to obtain a valid JSON response. Yet, you may want to ensure that the JSON conforms to your defined schema. Anyscale has made it possible to use its JSON Mode with the Portkey Client SDK.
 
-Anyscale Endpoints offers managed API endpoints for open-source LLMs, freeing you from infrastructure worries while building LLM-powered apps. Anyscale has recently [introduced JSON Mode ](https://www.anyscale.com/blog/anyscale-endpoints-json-mode-and-function-calling-features)with the `response_format` option, **allowing you to specify the JSON schema**, which is a step up from current OpenAI's JSON Mode only to ensure valid JSON.&#x20;
+Anyscale Endpoints offers managed API endpoints for open-source LLMs, freeing you from infrastructure worries while building LLM-powered apps. Anyscale [introduced JSON Mode](https://www.anyscale.com/blog/anyscale-endpoints-json-mode-and-function-calling-features), which **allows you to specify the JSON schema**, which is a step up from current OpenAI's JSON Mode only to ensure valid JSON.&#x20;
 
 {% tabs %}
 {% tab title="Nodejs" %}
