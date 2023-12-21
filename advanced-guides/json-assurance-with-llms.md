@@ -44,53 +44,24 @@ const response = chatCompletion.choices[0].message.content;
 {% endtab %}
 
 {% tab title="Python" %}
-{% code overflow="wrap" %}
-```javascript
-import Portkey from "portkey-ai";
+<pre class="language-python" data-overflow="wrap"><code class="lang-python"># import portkey_ai, BaseModel (from pydantic), List (from typing)
+<strong>class RecipeSchema(BaseModel):
+</strong><strong>    title: str
+</strong><strong>    desc: str
+</strong><strong>    steps: List[str]
+</strong>    
+chatCompletion = portkey.chat.completions.create(
+    messages = [{ "role": 'user', "content": 'As culinary master, you provide fried rice recipes in JSON format' }],
+    model = 'mistralai/Mistral-7B-Instruct-v0.1',
+    response_format = {
+        "type":"json_object",
+<strong>        "schema": RecipeSchema.schema_json()
+</strong>    }
+    
+)
 
-const portkey = new Portkey({
-  apiKey: process.env.PORTKEY_API_KEY,
-  virtualKey: process.env.ANYSCALE_VIRTUAL_KEY,
-});
-
-const messages = [
-  {
-    role: "system",
-    content: `As culinary master, you provide structured recipes in JSON format.`,
-  },
-  {
-    role: "user",
-    content: `Suggest me how to make fried rice`,
-  },
-];
-
-const chatCompletion = await portkey.chat.completions.create({
-  messages,
-  model: "mistralai/Mistral-7B-Instruct-v0.1",
-  response_format: {
-    type: "json_object",
-    schema: {
-      type: "object",
-      properties: {
-        title: {
-          type: "string",
-        },
-        description: {
-          type: "string",
-        },
-        steps: {
-          type: "array",
-        },
-      },
-    },
-  },
-});
-
-const response = chatCompletion.choices[0].message.content;
-
-console.log(response);
-```
-{% endcode %}
+print(chatCompletion.choices[0].message['content'])
+</code></pre>
 {% endtab %}
 {% endtabs %}
 
@@ -123,8 +94,6 @@ Portkey SDK provides uniform code interfaces consistent with OpenAI SDK, allowin
 ### Playground
 
 You can achieve the best possible prompt for your use case by confidently experimenting with various JSON schema and LLM parameters using the Portkey prompt playground.
-
-Here is how the user interface looks like.
 
 <figure><img src="../.gitbook/assets/JSON Prompt UI.png" alt=""><figcaption><p>A Glimpse into the Portkey Prompt Playground</p></figcaption></figure>
 
