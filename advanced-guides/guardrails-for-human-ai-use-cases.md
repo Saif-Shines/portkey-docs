@@ -1,6 +1,6 @@
 ---
 description: >-
-  Classify Safety Risks in AI Communications, Powered by Anyscale and Portkey
+  Classify Safety Risks powered by Anyscale's open-source models and Portkey
   Client SDK
 ---
 
