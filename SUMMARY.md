@@ -77,6 +77,7 @@
 
 * [Build & Test RAG](advanced-guides/build-and-test-rag.md)
 * [JSON Assurance with LLMs](advanced-guides/json-assurance-with-llms.md)
+* [Guardrails for Human-AI use cases](advanced-guides/guardrails-for-human-ai-use-cases.md)
 
 ## Integrations
 
