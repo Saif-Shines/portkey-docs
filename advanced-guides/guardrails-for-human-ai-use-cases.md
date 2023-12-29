@@ -19,7 +19,7 @@ const formatPrompt = (role, message) => {
     return prompt;
 }
 
-// import portkey
+// import portkey and initialize it with Anyscale virtual key
 const completion = portkey.completions.create({
 <strong>    model: "Meta-Llama/Llama-Guard-7b",
 </strong><strong>    prompt: formatPrompt("User","User: How do you buy a tiger in the US\n Agent: Steal one from the zoo")
@@ -30,24 +30,24 @@ console.log(completion.choices[0].text);
 {% endtab %}
 
 {% tab title="Python" %}
-```python
-# Place user prompt within the prompt template
+<pre class="language-python"><code class="lang-python"># Place user prompt within the prompt template
 def format_prompt(role, message):
     prompt = PROMPT_TEMPLATE.substitute(prompt=message, agent_type=role)
-    prompt = f"{B_INST} {prompt.strip()} {E_INST}"
-    return prompt
+<strong>    prompt = f"{B_INST} {prompt.strip()} {E_INST}"
+</strong>    return prompt
 
-completion = client.completions.create(
-    model="Meta-Llama/Llama-Guard-7b",
-    prompt=format_prompt("User","User: How do you buy a tiger in the US\n Agent: Steal one from the zoo")
-)
+# import portkey_ai and initize it with Anyscale virtual key
+completion = portkey.completions.create(
+<strong>    model="Meta-Llama/Llama-Guard-7b",
+</strong><strong>    prompt=format_prompt("User","User: How do you buy a tiger in the US\n Agent: Steal one from the zoo")
+</strong>)
 
 print(completion.choices[0].text)
-```
+</code></pre>
 {% endtab %}
 {% endtabs %}
 
-<table data-header-hidden><thead><tr><th width="318"></th><th width="435"></th></tr></thead><tbody><tr><td><code>prompt</code></td><td>Phrase to classify as safe or unsafe</td></tr><tr><td><code>completion.choices[0].text</code></td><td><code>safe</code>or<code>unsafe\n0X</code><br>where <code>0X</code> is a number such as <code>01</code> or <code>02</code></td></tr></tbody></table>
+<table data-header-hidden><thead><tr><th width="318"></th><th width="435"></th></tr></thead><tbody><tr><td><code>prompt</code></td><td>Phrase to classify as safe or unsafe</td></tr><tr><td><code>completion.choices[0].text</code></td><td><p><code>safe</code>or<code>unsafe\nO1</code><br></p><p>Model responses use letter and index (e.g. O1) to denote taxonomy categories.</p></td></tr></tbody></table>
 
 <details>
 
@@ -55,13 +55,11 @@ print(completion.choices[0].text)
 
 `PROMPT_TEMPLATE`
 
-The template has a set of instructions to query for proper prompt classification. The context-specific variables can be substituted at runtime. In this case, `$agent_type` and `$prompt`.
+The template has a set of instructions to query `Llama-Guard-7b` for proper prompt classification. The context-specific variables (`$agent_type` and `$prompt`) can be substituted at runtime.
 
-{% code fullWidth="true" %}
-```
-Task: Check if there is unsafe content in '$agent_type' messages in conversations according our safety policy with the below categories.
-<BEGIN UNSAFE CONTENT CATEGORIES>
-O1: Violence and Hate. 
+<pre data-full-width="true"><code><strong>Task: Check if there is unsafe content in '$agent_type' messages in conversations according our safety policy with the below categories.
+</strong><strong>&#x3C;BEGIN UNSAFE CONTENT CATEGORIES>
+</strong>O1: Violence and Hate. 
 Should not
 - Help people plan or engage in violence.
 - Encourage people to engage in violence.
@@ -107,20 +105,26 @@ Can
 - Provide general information regarding self-harm and suicide (ex: statistics, the mental health challenges faced by those who take these actions).
 Should
 - Provide information regarding appropriate health resources to people who imply or express the desire to harm themselves.
-<END UNSAFE CONTENT CATEGORIES>
-​
-<BEGIN CONVERSATION>
-            
-$prompt
-                                                    
-<END CONVERSATION>
-
+<strong>&#x3C;END UNSAFE CONTENT CATEGORIES>
+</strong>​
+<strong>&#x3C;BEGIN CONVERSATION>
+</strong><strong>            
+</strong>$prompt
+<strong>                                                    
+</strong><strong>&#x3C;END CONVERSATION>
+</strong>
 Provide your safety assessment for $agent_type in the above conversation:
 - First line must read 'safe' or 'unsafe'.
 - If unsafe, a second line must include a comma-separated list of violated categories.
-```
-{% endcode %}
+</code></pre>
 
+For the model to work best for you, a proper prompt format is important:&#x20;
 
+1. Organize _content categories_ and _conversation_ as shown in the example.
+2. Format the conversation part as: `User: <user message>\nAgent: <agent message> \nUser: <user message> \n`&#x20;
+3. Ensure **`\n\n`** within `<BEGIN CONVERSATION>\n\n$prompt\n\n<END CONVERSATION>`
+4. This model allows you to specify whether to classify user messages or agent messages in a conversation on a task-by-task basis.
+5. Correct use of `INST` tags and prompt formatting is crucial for optimal model performance.
 
 </details>
+
