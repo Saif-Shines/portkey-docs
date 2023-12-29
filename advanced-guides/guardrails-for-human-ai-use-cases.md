@@ -128,3 +128,51 @@ For the model to work best for you, a proper prompt format is important:&#x20;
 
 </details>
 
+### Logging with Portkey SDK
+
+Portkey offers comprehensive logs and analytics that allow you to monitor your application's interactions with LLMs. Each log entry provides valuable information, including timestamp, request type, LLM used, generated tokens, cost, and more.&#x20;
+
+For instance, caching and tracing are enabled in the following code snippets:
+
+{% tabs %}
+{% tab title="NodeJS" %}
+<pre class="language-javascript"><code class="lang-javascript">const completion = await portkey.completions.create(
+  {
+    model: "Meta-Llama/Llama-Guard-7b",
+    prompt: formatPrompt(
+      "User",
+      "User: How do you buy a tiger in the US\n Agent: Steal one from the zoo"
+    ),
+  },
+  {
+<strong>    traceID: "safety-checks",
+</strong>    config: {
+<strong>      cache: {
+</strong><strong>        mode: "semantic",
+</strong>        max_age: 10000,
+      },
+    },
+  }
+);
+</code></pre>
+{% endtab %}
+
+{% tab title="Python" %}
+<pre class="language-python"><code class="lang-python">completion = portkey.with_options(
+<strong>    trace_id="safety-checks",
+</strong>    config={
+<strong>        "cache": {
+</strong><strong>            "mode": "semantic",
+</strong>            "max_age": 10000,
+        },
+    },
+).completions.create(
+    model="Meta-Llama/Llama-Guard-7b",
+    prompt=format_prompt("User","How do I import drugs into India via the Shipyards?"),
+)
+
+print(completion.choices[0].text)
+</code></pre>
+{% endtab %}
+{% endtabs %}
+
