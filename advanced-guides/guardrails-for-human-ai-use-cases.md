@@ -2,6 +2,17 @@
 description: >-
   Classify Safety Risks powered by Anyscale's open-source models and Portkey
   Client SDK
+layout:
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: false
+  pagination:
+    visible: true
 ---
 
 # Guardrails for Human-AI use cases
@@ -178,3 +189,35 @@ print(completion.choices[0].text)
 
 <figure><img src="../.gitbook/assets/logging.png" alt=""><figcaption><p>The dashboard shows logs and filtering by trace ID</p></figcaption></figure>
 
+### Feedback Analytics
+
+Portkey SDK allows you to gather weighted feedback from users on AI models and applications, allowing for continuous improvement and refinement over time. If you want your users to upvote or downvote a response, you could tie user feedback directly to the LLM calls to gain insights.
+
+{% tabs %}
+{% tab title="NodeJS" %}
+<pre class="language-javascript"><code class="lang-javascript"><strong>const feedback = await portkey.feedback.create({
+</strong>  traceID: "safety-checks",
+<strong>  value: -1,
+</strong>});
+
+console.log(feedback.status); // success
+
+</code></pre>
+{% endtab %}
+
+{% tab title="Python" %}
+<pre class="language-python"><code class="lang-python"><strong>feedback = portkey.feedback.create(
+</strong>    trace_id="safety-checks",
+<strong>    value=1
+</strong>)
+
+print(feedback.status) # success
+</code></pre>
+{% endtab %}
+{% endtabs %}
+
+<figure><img src="../.gitbook/assets/feedback-analytics-dashboard.png" alt=""><figcaption><p>Portkey displays analytics automatically on the dashboard</p></figcaption></figure>
+
+Next time you are building an Human-AI use-case, use Anyscale's Llama's Guard to ensure safe prompts and responses as your application interacts with multiple LLMs. Using Portkey SDK in to implement the safeguards get the useful insights to keep up the momentum.
+
+Are you interested in all things related to LLMs in Production? [Join](https://discord.gg/DD7vgKK299) our community discussions and connect with like-minded individuals.
