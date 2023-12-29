@@ -176,3 +176,5 @@ print(completion.choices[0].text)
 {% endtab %}
 {% endtabs %}
 
+<figure><img src="../.gitbook/assets/logging.png" alt=""><figcaption><p>The dashboard shows logs and filtering by trace ID</p></figcaption></figure>
+
