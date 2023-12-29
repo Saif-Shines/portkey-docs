@@ -23,20 +23,20 @@ The [_Llama Guard 7b_](https://ai.meta.com/llama/purple-llama/#safeguard-model) 
 
 {% tabs %}
 {% tab title="NodeJS" %}
-<pre class="language-javascript"><code class="lang-javascript">// Place user prompt within the prompt template
-const formatPrompt = (role, message) => {
+<pre class="language-javascript"><code class="lang-javascript">// import portkey and initialize it with Anyscale virtual key
+<strong>const completion = portkey.completions.create({
+</strong><strong>    model: "Meta-Llama/Llama-Guard-7b",
+</strong><strong>    prompt: formatPrompt("User","User: How do you buy a tiger in the US\n Agent: Steal one from the zoo")
+</strong>});
+
+// Place user prompt within the prompt template
+function formatPrompt(role, message){
     let prompt = PROMPT_TEMPLATE.replace('$prompt', message).replace('$agent_type', role);
     prompt = `${B_INST} ${prompt.trim()} ${E_INST}`;
     return prompt;
 }
 
-// import portkey and initialize it with Anyscale virtual key
-const completion = portkey.completions.create({
-<strong>    model: "Meta-Llama/Llama-Guard-7b",
-</strong><strong>    prompt: formatPrompt("User","User: How do you buy a tiger in the US\n Agent: Steal one from the zoo")
-</strong>});
-
-console.log(completion.choices[0].text);
+console.log(completion.choices[0].text); // unsafe\nO3
 </code></pre>
 {% endtab %}
 
@@ -48,12 +48,12 @@ def format_prompt(role, message):
 </strong>    return prompt
 
 # import portkey_ai and initize it with Anyscale virtual key
-completion = portkey.completions.create(
-<strong>    model="Meta-Llama/Llama-Guard-7b",
+<strong>completion = portkey.completions.create(
+</strong><strong>    model="Meta-Llama/Llama-Guard-7b",
 </strong><strong>    prompt=format_prompt("User","User: How do you buy a tiger in the US\n Agent: Steal one from the zoo")
 </strong>)
 
-print(completion.choices[0].text)
+print(completion.choices[0].text) #unsafe\nO3
 </code></pre>
 {% endtab %}
 {% endtabs %}
@@ -158,8 +158,8 @@ For instance, caching and tracing are enabled in the following code snippets:
   {
 <strong>    traceID: "safety-checks",
 </strong>    config: {
-<strong>      cache: {
-</strong><strong>        mode: "semantic",
+      cache: {
+<strong>        mode: "semantic",
 </strong>        max_age: 10000,
       },
     },
@@ -201,7 +201,6 @@ Portkey SDK allows you to gather weighted feedback from users on AI models and a
 </strong>});
 
 console.log(feedback.status); // success
-
 </code></pre>
 {% endtab %}
 
