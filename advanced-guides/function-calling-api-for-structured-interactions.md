@@ -130,7 +130,7 @@ You can notice the the a specification of expected argument. In this case, we re
 {% tabs %}
 {% tab title="NodeJS" %}
 ```javascript
-const response = await portkey.chat.completions.create({
+let response = await portkey.chat.completions.create({
   model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
   tools,
   messages,
@@ -144,7 +144,7 @@ console.log(response.choices[0].finish_reason) // tool_calls
 
 {% tab title="Python" %}
 ```python
-response = client.chat.completions.create(
+response = portkey.chat.completions.create(
     model="mistralai/Mixtral-8x7B-Instruct-v0.1",
     messages=messages,
     tools=tools,
@@ -161,7 +161,7 @@ We will see the following response
     "role": "assistant",
     "content": null,
     "tool_calls": [
-        "id": "call_...", 
+        "id": "call_x8we3xx", 
         "type": "function", 
         "function": {
             "name": "get_current_weather", 
@@ -187,10 +187,91 @@ The interactions involve making an API call to an external weather service for r
 
 {% tabs %}
 {% tab title="NodeJS" %}
+{% code overflow="wrap" %}
+```javascript
+/**
+* getWeather(..) is a utility to call external 
+* weather service APIs responds {"temperature": 20, "unit": "celsius"}
+**/
 
+let weatherData = await getWeather(JSON.parse(arguments));
+let content = JSON.stringify(weatherData);
+
+// Push assistant and tool message from earlier generated function arguments
+messages.push(assistantMessage); //
+messages.push({
+    role: "tool", 
+    content: content, 
+    toolCallId: toolId, // call_x8we3xx
+    name: toolName // get_current_weather
+});
+```
+{% endcode %}
 {% endtab %}
 
 {% tab title="Python" %}
+{% code overflow="wrap" %}
+```python
+import json
 
+"""
+get_weather(..) is a utility to call external weather service APIs responds {"temperature": 20, "unit": "celsius"}
+"""
+
+weather_data = get_weather(**json.loads(arguments))
+content = str(weather_data)
+
+# Append assistant and tool message from earlier generated function arguments 
+messages.append(assistant_message)
+messages.append({
+    "role": "tool", 
+    "content": content, 
+    "tool_call_id": tool_id, # call_x8we3xx
+    "name": tool_name # get_current_weather
+})
+
+```
+{% endcode %}
 {% endtab %}
 {% endtabs %}
+
+2. **A chat completions call with real-time data**
+
+{% tabs %}
+{% tab title="NodeJS" %}
+```javascript
+# Send the messages back to the LLM
+let response = await portkey.chat.completions.create({
+  model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
+  tools,
+  messages,
+  tool_choice: "auto", // auto is default, yet explicit
+});
+
+console.log(response.choices[0].message)
+```
+{% endtab %}
+
+{% tab title="Python" %}
+```python
+# Send the messages back to the LLM
+response = portkey.chat.completions.create(
+    model="mistralai/Mixtral-8x7B-Instruct-v0.1",
+    messages=messages,
+    tools=tools,
+    tool_choice="auto",
+)
+
+print(response.choices[0].message)
+```
+{% endtab %}
+{% endtabs %}
+
+Here's the response
+
+```json
+{
+    "role": "assistant",
+    "content": "It's 20 degrees celsius in San Francisco.",
+}
+```
