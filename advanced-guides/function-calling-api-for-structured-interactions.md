@@ -26,7 +26,7 @@ For example, when building a weather app, you can use JSON web requests to obtai
 
 <img src="../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
 
-## Generate Function Arguments
+## Generate function arguments
 
 To generate function arguments, we call chat completions and define _function_ parameters and descriptions with `tools` argument to Anyscale's `mistralai/Mixtral-8x7B-Instruct-v0.1` model.&#x20;
 
@@ -157,9 +157,7 @@ print(response.choices[0].message)
 
 We will see the following response
 
-{% code overflow="wrap" %}
-```json
-{
+<pre class="language-json" data-overflow="wrap"><code class="lang-json">{
     "role": "assistant",
     "content": null,
     "tool_calls": [
@@ -167,12 +165,11 @@ We will see the following response
         "type": "function", 
         "function": {
             "name": "get_current_weather", 
-            "arguments": '{\n  "location": "San Fransisco, USA",\n  "format": "celsius"\n}'
-        }
+<strong>            "arguments": '{\n  "location": "San Fransisco, USA",\n  "format": "celsius"\n}'
+</strong>        }
     ],
 }
-```
-{% endcode %}
+</code></pre>
 
 The response tells us that `get_current_weather` function specified in the `tool` is activated and the `arguments` adhere to the specification we provided. Note that the if the _temperature_ is non-zero, the output will be non-deterministic.
 
@@ -182,3 +179,18 @@ You can force the LLM's choice of tools by changing the `tool_choice` value
 
 The `finish_reason` is `tool_calls`  if an chat completions call used tools.
 
+## Use function arguments for interactions
+
+The interactions involve making an API call to an external weather service for real-time weather data, which is then used to guide LLM responses to the user in natural language.
+
+1. **Call to external weather service**
+
+{% tabs %}
+{% tab title="NodeJS" %}
+
+{% endtab %}
+
+{% tab title="Python" %}
+
+{% endtab %}
+{% endtabs %}
