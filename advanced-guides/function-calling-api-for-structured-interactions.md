@@ -50,8 +50,8 @@ const portkey = new Portkey({
 from portkey_ai import Portkey
 
 portkey = Portkey(
-    api_key="x2trk",
-    virtual_key="anyscale-3d8c65"
+    api_key="xxxx",
+    virtual_key="anyscale-xxxx"
 )
 ```
 {% endtab %}
